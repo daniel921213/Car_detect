@@ -1,0 +1,13 @@
+train: D:\Car dection\dateset\train\images
+val: D:\Car dection\dateset\valid\images
+test: D:\Car dection\dateset\test\images
+
+nc: 1
+names: ['license-plate']
+
+roboflow:
+  workspace: car-class-riclz
+  project: license_plate_01
+  version: 10
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/car-class-riclz/license_plate_01/dataset/10

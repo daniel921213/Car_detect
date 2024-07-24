@@ -14,7 +14,7 @@ RTSP: 用於流媒體的協議，通常用於從攝像頭獲取視頻流。你�
 ![image](https://github.com/user-attachments/assets/425a9d67-9b74-4bcb-882f-7b779c1a3f2c)
 
 
-https://kaichenlab.medium.com/%E5%AF%A6%E7%94%A8%E5%BF%83%E5%BE%97-tesseract-ocr-eef4fcd425f0 #簡單介紹
+https://reurl.cc/OM2amD #簡單介紹
 
 
 Tesseract OCR: 這是一個開源的光學字符識別引擎，能夠從圖像中提取文本。你可以使用 Tesseract OCR 來識別車牌中的文字。

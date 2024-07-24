@@ -1,11 +1,9 @@
 import cv2
-import threading
 from ultralytics import YOLO
 import pytesseract
 import re
 import torch
-import pandas as pd
-
+import numpy as np
 torch.cuda.empty_cache()
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -15,53 +13,74 @@ URL = "rtsp://admindaniel:921213@192.168.11.68:554/stream1"
 cap = cv2.VideoCapture(URL)
 
 NUM = 0
-model = YOLO(r"D:\Car dection\plate.pt")
+model = YOLO(r"D:\Car dection\best.pt")
 
-#存車牌
-license_plates = []
-# 緩存已識別
-known_plates = set()
-
-def save_to_excel(plates):
-    df = pd.DataFrame(plates, columns=['License Plate'])
-    df.to_excel('license_plates.xlsx', index=False)
-    print("車牌正在保存 license_plates.xlsx")
+# 创建背景减法器对象
+fgbg = cv2.createBackgroundSubtractorMOG2()
 
 def show_video():
-    # 视窗名称
+    # 視窗名稱
     window_name = "daniel cardetction"
-    # 创建视窗
+    plate_window_name = "detected plates"
+    snapshot_window_name = "snapshot"
+    # 創建視窗
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
-    # 视窗大小
     cv2.resizeWindow(window_name, 1280, 720)  
+
+    cv2.namedWindow(plate_window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(plate_window_name, 640, 360)
+
+    cv2.namedWindow(snapshot_window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(snapshot_window_name, 640, 360)
+
+    vehicle_detected = False
 
     while True:
         ret, frame = cap.read()
         if not ret:
             break
-        else:
-            # 車牌識別
+
+        # 背景减法
+        fgmask = fgbg.apply(frame)
+        # 去除噪声
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+        fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)
+
+        # 找到轮廓
+        contours, _ = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        
+        # 检测车辆进入
+        vehicle_present = False
+        for contour in contours:
+            if cv2.contourArea(contour) > 5000:  # 调整这个面积阈值以检测车辆进入
+                vehicle_present = True
+                break
+
+        if vehicle_present and not vehicle_detected:
+            vehicle_detected = True
+            print("Vehicle detected")
+
+            # 拍照保存图像
+            image_filename = f"vehicle_{NUM}.jpg"
+            cv2.imwrite(image_filename, frame)
+            # NUM += 1
+
+            # 显示拍到的照片
+            snapshot_img = cv2.imread(image_filename)
+            cv2.imshow(snapshot_window_name, snapshot_img)
+
+            # 車牌辨識
             results = model(frame, conf=0.05)
             res = results[0]
             boxes_list = res.boxes
             bbox_points_list = []
 
-            # 使用Tesseract OCR 識別，然後繪製
-            new_plates_detected = False
             for box in boxes_list.xyxy:
                 x1, y1, x2, y2 = int(box[0].item()), int(box[1].item()), int(box[2].item()), int(box[3].item())
                 bbox_points_list.append([x1, y1, x2, y2])
                 crop_img = frame[y1:y2, x1:x2]
                 cur_text = pytesseract.image_to_string(crop_img, config='--psm 11')
-                cur_text = re.sub(r'[^\w\d]', '', cur_text)  # 正则表达式去除所有非字母和数字字符
-                
-                if cur_text and cur_text not in known_plates:
-                    known_plates.add(cur_text)
-                    license_plates.append(cur_text)
-                    # 保存Excel文件
-                    save_to_excel(license_plates)
-                    new_plates_detected = True
-
+                cur_text = re.sub(r'[^\w\d]', '', cur_text)  # 正規表達式去除所有非字母和數字字符
                 text_color = (200, 200, 200)
                 background_color = (210, 0, 111)
                 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -69,41 +88,21 @@ def show_video():
                 thickness = 2
                 (text_width, text_height), baseline = cv2.getTextSize(cur_text, font, font_scale, thickness)
                 cv2.rectangle(frame, (x1, y1 - text_height - 15), (x1 + text_width, y1 + baseline - 10), background_color, -1)
-                cv2.putText(frame, cur_text, (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, font_scale, text_color, thickness)
+                cv2.putText(frame, cur_text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, font_scale, text_color, thickness)
                 cv2.rectangle(frame, (x1, y1), (x2, y2), background_color, 3)
 
-            cv2.imshow(window_name, frame)
-            
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-            
-            # 如果新的车牌，暂停識別，直到下一個車牌出现
-            if new_plates_detected:
-                print("dected new car_plate，暂停識別中...")
-                while True:
-                    # 在此暂停識別
-                    ret, frame = cap.read()
-                    if not ret:
-                        break
-                    results = model(frame, conf=0.05)
-                    res = results[0]
-                    boxes_list = res.boxes
-                    
-                    # 檢查是否有新的車牌出现
-                    new_plate_found = False
-                    for box in boxes_list.xyxy:
-                        x1, y1, x2, y2 = int(box[0].item()), int(box[1].item()), int(box[2].item()), int(box[3].item())
-                        crop_img = frame[y1:y2, x1:x2]
-                        cur_text = pytesseract.image_to_string(crop_img, config='--psm 11')
-                        cur_text = re.sub(r'[^\w\d]', '', cur_text)
-                        
-                        if cur_text and cur_text not in known_plates:
-                            new_plate_found = True
-                            break
-                    
-                    if new_plate_found:
-                        break
-                    cv2.waitKey(5000)  # 每秒检查一次
+                # 在新窗口中顯示檢測到的車牌文字
+                if cur_text:
+                    plate_img = 255 * np.ones((360, 640, 3), dtype=np.uint8)
+                    cv2.putText(plate_img, cur_text, (10, 180), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 3, cv2.LINE_AA)
+                    cv2.imshow(plate_window_name, plate_img)
+
+        elif not vehicle_present:
+            vehicle_detected = False
+
+        cv2.imshow(window_name, frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
     cap.release()
     cv2.destroyAllWindows()

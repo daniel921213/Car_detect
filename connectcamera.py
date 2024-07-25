@@ -63,7 +63,7 @@ def show_video():
             # 拍照保存图像
             image_filename = f"vehicle_{NUM}.jpg"
             cv2.imwrite(image_filename, frame)
-            # NUM += 1
+            NUM += 1
 
             # 显示拍到的照片
             snapshot_img = cv2.imread(image_filename)

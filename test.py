@@ -5,6 +5,10 @@ import numpy as np
 from ultralytics import YOLO
 import easyocr
 import pytesseract
+
+from PyQt5 import QtWidgets, QtGui, QtCore
+from ui import Ui_MainWindow
+
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # 文字辨識
@@ -40,12 +44,12 @@ def process_image(image_path):
     frame = cv2.imread(image_path)
     if frame is None:
         print(f"Error: Unable to read image from {image_path}")
-        return
+        
 
     car_model = YOLO(r"D:\Car dection\best.pt")
     word_model = YOLO(r"D:\Car dection\best_word.pt")
 
-    # 车牌识别
+    # 車牌識別
     results = car_model(frame, conf=0.05)
     res = results[0]
     boxes_list = res.boxes
@@ -56,6 +60,8 @@ def process_image(image_path):
     # 切出車牌
     for idx, box in enumerate(boxes_list.xyxy):
         x1, y1, x2, y2 = int(box[0].item()), int(box[1].item()), int(box[2].item()), int(box[3].item())
+        print(x1,y1,x2,y2)
+
         crop_img = frame[y1:y2, x1:x2]
 
         crop_window_name = f"Crop Image {idx + 1}"
@@ -63,7 +69,7 @@ def process_image(image_path):
         crop_img_filename = f"crop_image_{idx + 1}.jpg"
         cv2.imwrite(crop_img_filename, crop_img)   
 
-        # 這邊使用easyocr來做，因為用自己對付畸形車牌來用在正正方方發現會有一些錯誤
+        # 這邊使用easyocr來做，因為用自己對付畸形車牌來用在正正方方的車牌發現會有一些錯誤
         ocr_results = reader.readtext(crop_img)
         cur_text = ''.join([res[1] for res in ocr_results])
         cur_text = re.sub(r'[^\w\d]', '', cur_text)
@@ -126,5 +132,5 @@ def process_image(image_path):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-image_path = r"D:\車牌照片2\car_17.jpg"
+image_path = r"D:\下載\Car_dection.v6i.yolov8\train\images\car_99.jpg"
 process_image(image_path)

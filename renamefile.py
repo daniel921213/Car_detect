@@ -13,5 +13,5 @@ def rename_images(directory, prefix="car_", start_number=1):
         dst = os.path.join(directory, new_name)
         os.rename(src, dst)
        
-directory_path = r"D:\Car dection\dateset\train\images"
+directory_path = r"D:\下載\Car_dection.v6i.yolov8\train\images"
 rename_images(directory_path)

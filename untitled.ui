@@ -1,0 +1,1449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1500</width>
+    <height>1075</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+QMainWindow::separator {
+    background: #444444;
+    width: 2px;
+    height: 2px;
+}
+
+QMainWindow::separator:hover {
+    background: #555555;
+}
+
+QToolBar {
+    background: #3a3a3a;
+    border: 1px solid #444444;
+    spacing: 3px;
+}
+
+QToolBar::handle:horizontal {
+    image: url(handle.png);
+}
+
+QToolBar::separator {
+    background: #444444;
+    width: 1px;
+    height: 1px;
+}
+
+QMenuBar {
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 5px 10px;
+}
+
+QMenuBar::item:selected {
+    background: #4d4d4d;
+}
+
+QMenu {
+    background-color: #3a3a3a;
+    border: 1px solid #444444;
+    color: #ffffff;
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 5px 20px;
+}
+
+QMenu::item:selected {
+    background-color: #4d4d4d;
+    color: #dcdcdc;
+}
+
+QStatusBar {
+    background: #3a3a3a;
+    color: #ffffff;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>1400</width>
+      <height>950</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget::pane { 
+    border: 1px solid #444444; 
+    background: #2e2e2e;
+}
+
+QTabBar::tab {
+    background: #3a3a3a;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #444444;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:selected {
+    background: #4d4d4d;
+    border-color: #555555;
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px; 
+}
+
+QTabBar::tab:hover {
+    background: #5a5a5a;
+    color: #dcdcdc;
+}
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>IP_carema</string>
+     </attribute>
+     <widget class="QPushButton" name="btn_open_file">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>161</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>51</red>
+            <green>51</green>
+            <blue>51</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="1.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.000000000000000">
+             <color alpha="255">
+              <red>240</red>
+              <green>240</green>
+              <blue>240</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>224</red>
+              <green>224</green>
+              <blue>224</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>51</red>
+            <green>51</green>
+            <blue>51</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>51</red>
+            <green>51</green>
+            <blue>51</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="1.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.000000000000000">
+             <color alpha="255">
+              <red>240</red>
+              <green>240</green>
+              <blue>240</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>224</red>
+              <green>224</green>
+              <blue>224</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="1.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.000000000000000">
+             <color alpha="255">
+              <red>240</red>
+              <green>240</green>
+              <blue>240</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>224</red>
+              <green>224</green>
+              <blue>224</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>51</red>
+            <green>51</green>
+            <blue>51</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="1.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.000000000000000">
+             <color alpha="255">
+              <red>240</red>
+              <green>240</green>
+              <blue>240</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>224</red>
+              <green>224</green>
+              <blue>224</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>51</red>
+            <green>51</green>
+            <blue>51</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>51</red>
+            <green>51</green>
+            <blue>51</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="1.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.000000000000000">
+             <color alpha="255">
+              <red>240</red>
+              <green>240</green>
+              <blue>240</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>224</red>
+              <green>224</green>
+              <blue>224</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.000000000000000" starty="0.000000000000000" endx="1.000000000000000" endy="1.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.000000000000000">
+             <color alpha="255">
+              <red>240</red>
+              <green>240</green>
+              <blue>240</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>224</red>
+              <green>224</green>
+              <blue>224</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>170</red>
+            <green>170</green>
+            <blue>170</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>249</red>
+            <green>249</green>
+            <blue>249</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>170</red>
+            <green>170</green>
+            <blue>170</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>170</red>
+            <green>170</green>
+            <blue>170</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>249</red>
+            <green>249</green>
+            <blue>249</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>249</red>
+            <green>249</green>
+            <blue>249</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f0f0f0, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #aaa;
+}
+
+QPushButton:pressed {
+    background: #d0d0d0;
+    border-color: #999;
+}
+
+QPushButton:disabled {
+    background: #f9f9f9;
+    color: #aaa;
+    border: 2px solid #ddd;
+    cursor: not-allowed;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>select car platees</string>
+      </property>
+      <property name="icon">
+       <iconset theme="1">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>321</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f9f9f9, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #ccc;
+}
+
+QLabel:pressed {
+    background: #e0e0e0;
+    border-color: #bbb;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>C:/Users/danie/OneDrive/文件/下載 (1).jpg</pixmap>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_file_name">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>571</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f9f9f9, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #ccc;
+}
+
+QLabel:pressed {
+    background: #e0e0e0;
+    border-color: #bbb;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>file name</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>120</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>480</y>
+        <width>211</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2"/>
+     </widget>
+     <widget class="QLabel" name="plate_image">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>190</y>
+        <width>209</width>
+        <height>89</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #212121, 
+                                stop: 1 #424242);
+    color: #e0e0e0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #424242, 
+                                stop: 1 #616161);
+    border: 1px solid #888;
+}
+
+QLabel:pressed {
+    background: #303030;
+    border: 1px solid #555;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>170</y>
+        <width>741</width>
+        <height>531</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="tabletTracking">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QScrollArea {
+    background: #2e2e2e;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+QScrollBar:vertical {
+    background: #3c3c3c;
+    width: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar:horizontal {
+    background: #3c3c3c;
+    height: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #6d6d6d;
+    border-radius: 6px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #6d6d6d;
+    border-radius: 6px;
+    min-width: 20px;
+}
+
+QScrollBar::handle:vertical:hover,
+QScrollBar::handle:horizontal:hover {
+    background: #888;
+}
+
+QScrollBar::handle:vertical:pressed,
+QScrollBar::handle:horizontal:pressed {
+    background: #555;
+}
+
+QScrollBar::add-line:vertical {
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #3c3c3c;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #3c3c3c;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #3c3c3c;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #3c3c3c;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical,
+QScrollBar::left-arrow:horizontal,
+QScrollBar::right-arrow:horizontal {
+    background: #666;
+    width: 10px;
+    height: 10px;
+}
+
+QScrollBar::up-arrow:vertical:hover,
+QScrollBar::down-arrow:vertical:hover,
+QScrollBar::left-arrow:horizontal:hover,
+QScrollBar::right-arrow:horizontal:hover {
+    background: #888;
+}
+</string>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>737</width>
+            <height>527</height>
+           </rect>
+          </property>
+          <widget class="QLabel" name="label_img">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>711</width>
+             <height>501</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #212121, 
+                                stop: 1 #424242);
+    color: #e0e0e0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #424242, 
+                                stop: 1 #616161);
+    border: 1px solid #888;
+}
+
+QLabel:pressed {
+    background: #303030;
+    border: 1px solid #555;
+}
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="plates">
+      <property name="geometry">
+       <rect>
+        <x>1020</x>
+        <y>230</y>
+        <width>281</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f9f9f9, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #ccc;
+}
+
+QLabel:pressed {
+    background: #e0e0e0;
+    border-color: #bbb;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>plate number:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="running_time">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>310</y>
+        <width>211</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f9f9f9, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #ccc;
+}
+
+QLabel:pressed {
+    background: #e0e0e0;
+    border-color: #bbb;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Runnung time</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_zoom_in">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>730</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f0f0f0, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #aaa;
+}
+
+QPushButton:pressed {
+    background: #d0d0d0;
+    border-color: #999;
+}
+
+QPushButton:disabled {
+    background: #f9f9f9;
+    color: #aaa;
+    border: 2px solid #ddd;
+    cursor: not-allowed;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>zoom_in</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="silder_zoom">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>740</y>
+        <width>160</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSlider::groove:horizontal {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, 
+                                stop: 0 #003366, 
+                                stop: 1 #004080);
+    height: 8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #0066cc;
+    border: 1px solid #003f5c;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin: -6px 0; /* center the handle */
+}
+
+QSlider::handle:horizontal:hover {
+    background: #004080;
+    border: 1px solid #001f3f;
+}
+
+QSlider::handle:horizontal:pressed {
+    background: #003366;
+    border: 1px solid #002b36;
+}
+
+QSlider::add-page:horizontal {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, 
+                                stop: 0 #001f3f, 
+                                stop: 1 #003366);
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, 
+                                stop: 0 #0066cc, 
+                                stop: 1 #00bfff);
+}
+
+QSlider::groove:vertical {
+    background: qlineargradient(y1: 0, x1: 0, y2: 1, x2: 0, 
+                                stop: 0 #003366, 
+                                stop: 1 #004080);
+    width: 8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:vertical {
+    background: #0066cc;
+    border: 1px solid #003f5c;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin: 0 -6px; /* center the handle */
+}
+
+QSlider::handle:vertical:hover {
+    background: #004080;
+    border: 1px solid #001f3f;
+}
+
+QSlider::handle:vertical:pressed {
+    background: #003366;
+    border: 1px solid #002b36;
+}
+
+QSlider::add-page:vertical {
+    background: qlineargradient(y1: 0, x1: 0, y2: 1, x2: 0, 
+                                stop: 0 #001f3f, 
+                                stop: 1 #003366);
+}
+
+QSlider::sub-page:vertical {
+    background: qlineargradient(y1: 0, x1: 0, y2: 1, x2: 0, 
+                                stop: 0 #0066cc, 
+                                stop: 1 #00bfff);
+}
+</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label__radio">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>740</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_zoom_out">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>730</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f0f0f0, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #aaa;
+}
+
+QPushButton:pressed {
+    background: #d0d0d0;
+    border-color: #999;
+}
+
+QPushButton:disabled {
+    background: #f9f9f9;
+    color: #aaa;
+    border: 2px solid #ddd;
+    cursor: not-allowed;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>zoom_out</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img_shape">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>800</y>
+        <width>561</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f9f9f9, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+QLabel:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #ccc;
+}
+
+QLabel:pressed {
+    background: #e0e0e0;
+    border-color: #bbb;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_execute">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>730</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f0f0f0, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #aaa;
+}
+
+QPushButton:pressed {
+    background: #d0d0d0;
+    border-color: #999;
+}
+
+QPushButton:disabled {
+    background: #f9f9f9;
+    color: #aaa;
+    border: 2px solid #ddd;
+    cursor: not-allowed;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>detect</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>400</y>
+        <width>531</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableWidget {
+    background-color: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0 #f2f2f2, stop: 1 #e0e0e0
+    ); /* 垂直渐变背景 */
+    border: 1px solid #ccc; /* 边框颜色 */
+    gridline-color: #d0d0d0; /* 网格线颜色 */
+    border-radius: 6px; /* 边角圆润 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 更加明显的阴影效果 */
+}
+
+QTableWidget::item {
+    padding: 6px; /* 单元格内边距 */
+    color: #2c2c2c; /* 字体颜色 */
+    border-radius: 4px; /* 单元格边角圆润 */
+    background-color: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #ffffff, stop: 1 #f5f5f5
+    ); /* 水平渐变背景 */
+}
+
+QHeaderView::section {
+    background-color: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0 #dcdcdc, stop: 1 #c0c0c0
+    ); /* 表头垂直渐变背景 */
+    color: #2c2c2c; /* 表头字体颜色 */
+    border: 1px solid #ccc; /* 表头边框颜色 */
+    border-radius: 4px; /* 表头边角圆润 */
+    padding: 6px; /* 表头内边距 */
+    font-weight: bold; /* 字体加粗 */
+}
+
+QTableWidget::item:selected {
+    background-color: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #b3d9ff, stop: 1 #a0c8ff
+    ); /* 选中单元格水平渐变背景 */
+    border: 1px solid #8aaad0; /* 选中单元格边框颜色 */
+}
+
+QTableWidget::item:hover {
+    background-color: qlineargradient(
+        x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 #e6f7ff, stop: 1 #d0efff
+    ); /* 悬停单元格水平渐变背景 */
+    border: 1px solid #a0bedf; /* 悬停单元格边框颜色 */
+}
+</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>辨識時間</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>車牌號碼</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>車牌照片</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>執行時間</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="delete_list">
+      <property name="geometry">
+       <rect>
+        <x>1230</x>
+        <y>350</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI,Tahoma,Geneva,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #f0f0f0, 
+                                stop: 1 #e0e0e0);
+    color: #333;
+    border: 2px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                                stop: 0 #e0e0e0, 
+                                stop: 1 #d0d0d0);
+    border-color: #aaa;
+}
+
+QPushButton:pressed {
+    background: #d0d0d0;
+    border-color: #999;
+}
+
+QPushButton:disabled {
+    background: #f9f9f9;
+    color: #aaa;
+    border: 2px solid #ddd;
+    cursor: not-allowed;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>delete_list</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Expert_IP_Canera</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>1140</x>
+        <y>20</y>
+        <width>181</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>120</y>
+        <width>1051</width>
+        <height>591</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="ip">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>60</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="port">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>60</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="connect">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>60</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>connect</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1500</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
